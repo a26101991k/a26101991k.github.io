@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title>ロシア語の知識ベース</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#kihonbutton").click(function() {
+                    $("#greeting").hide();
+                    if ($(".section1").text() != "基本") {
+                        $(".dropdown1").slideUp("fast");
+                        $(".section1").text("基本");
+                        $("#subbutton1").text("名詞").attr("href","meishi.htm");
+                        $("#subbutton2").text("動詞").attr("href","doushi.htm");
+                        $("#subbutton3").text("格").attr("href","kaku.htm");
+                        $("#subbutton4").text("").attr("href","");
+                        $(".dropdown1").slideDown("slow");
+                        setTimeout(function() {
+                            $(".dropdown1 a").css("opacity","1");
+                        }, 750);
+                    }
+                    else {
+                        $(".dropdown1").slideToggle("slow");
+                    }
+                });
+                $("#hatsuonbutton").click(function() {
+                    $("#greeting").hide();
+                    if ($(".section1").text() != "発音ガイド") {
+                        $(".dropdown1").slideUp("fast");
+                        $(".section1").text("発音ガイド");
+                        $("#subbutton1").text("アクセントと音色").attr("href", "aksentotoonshoku.htm");
+                        $("#subbutton2").text("母音と子音").attr("href", "bointoshiin.htm");
+                        $("#subbutton3").text("有声音と無声音").attr("href", "yuseiontomuseion.htm");
+                        $("#subbutton4").text("").attr("href", "doushit.htm");
+                        $(".dropdown1").slideDown("slow");
+                        setTimeout(function () {
+                            $(".dropdown1 a").css("opacity", "1");
+                        }, 750);
+                    }
+                    else {
+                        $(".dropdown1").slideToggle("slow");
+                    }
+                });
+                $("#hyobutton").click(function() {
+                    $("#greeting").hide();
+                    if ($(".section1").text() != "表リスト") {
+                        $(".dropdown1").slideUp("fast");
+                        $(".section1").text("表リスト");
+                        $("#subbutton1").text("名詞の格").attr("href", "meishit.htm");
+                        $("#subbutton2").text("形容詞の格").attr("href", "keiyoushit.htm");
+                        $("#subbutton3").text("代名詞の格").attr("href", "daimeishit.htm");
+                        $("#subbutton4").text("動詞の時間").attr("href", "doushit.htm");
+                        $(".dropdown1").slideDown("slow");
+                        setTimeout(function () {
+                            $(".dropdown1 a").css("opacity", "1");
+                        }, 750);
+                    }
+                    else {
+                        $(".dropdown1").slideToggle("slow");
+                    }
+                });
+            });
+        </script>
+        <style>
+            h1 {
+                text-align:center;
+                }
+            body {
+                background-color:white;
+                }
+            div {
+                width: 100%;
+                height: 100%;
+            }
+            .iframe {
+                border:none;
+                width:100%;
+                height:700px;
+                background-color:white;
+                }
+            ul {
+                list-style-type:none;
+                border:1px solid #ccc;
+                border-top-style: solid;
+                border-radius:0 0 10px 10px;
+                margin: 0 0 0 0;
+                overflow:hidden;
+                background-color:#EA4335;
+                }
+            li {
+                float:left;
+                }
+            li a {
+                display:block;
+                text-decoration:none;
+                color:white;
+                padding:15px;
+                text-align:center;
+                border:1px solid #EA4335;
+                }
+            li a:hover {
+                border-color:#ccc;
+                }
+            li a:focus {
+                border-color:#ccc;
+                }
+            .section1 {
+                border:1px solid #ccc;
+                border-top-style: none;
+                border-bottom-style: none;
+                border-radius:0;
+                text-align:center;
+                background-color:#4285F4;
+                color:white;
+                padding: 10px;
+                margin: 0 0 0 0;
+                }
+            .menu1 {
+                top: 0;
+                border:1px solid #ccc;
+                border-radius:10px 10px 0 0;
+                margin: 0 0 0 0;
+                background-color:white;
+                }
+            .menu2 {
+                border-color:white;
+                color:black;
+                }
+            .dropdown1 {
+                display: none;
+                }
+            .dropdown1 a {
+                opacity: 0.25;
+                }
+            footer {
+                border-top:1px solid #ccc;
+                color: #ccc;
+                padding: 1px;
+                text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>ロシア語の知識ベース</h1>
+        <p id="greeting">ようこそ！メニューをクリックしてください</p>
+        <div>
+        <ul id="main" class="menu1">
+            <li><a id="kihonbutton" class="menu2" href="#main">基本</a></li>
+            <li><a id="hatsuonbutton" class="menu2" href="#main">発音ガイド</a></li>
+            <li><a id="hyobutton" class="menu2" href="#main">表リスト</a></li>
+        </ul>
+        <h2 class="section1 dropdown1"></h2>
+        <ul class="dropdown1">
+            <li><a id="subbutton1" href="meishi.htm" target="iframe1"></a></li>
+            <li><a id="subbutton2" href="doushi.htm" target="iframe1"></a></li>
+            <li><a id="subbutton3" href="kaku.htm" target="iframe1"></a></li>
+            <li><a id="subbutton4" href="kaku.htm" target="iframe1"></a></li>
+        </ul>
+            <iframe class="iframe" name="iframe1"></iframe>
+        </div>
+        <footer>
+            <p>Developed by Kuznetsov Andrey</p>
+        </footer>
+    </body>
+</html>
