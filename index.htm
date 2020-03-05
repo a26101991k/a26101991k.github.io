@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <title>Portfolio</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <style>
+            h1 {
+                text-align:center;
+                }
+            body {
+                background-color:white;
+                }
+            div {
+                width: 100%;
+                height: 100%;
+            }
+            .iframe {
+                border:none;
+                width:100%;
+                height:700px;
+                background-color:white;
+                }
+            ul {
+                list-style-type:none;
+                border:1px solid #ccc;
+                border-top-style: solid;
+                border-radius:0 0 10px 10px;
+                margin: 0 0 0 0;
+                overflow:hidden;
+                background-color:#EA4335;
+                }
+            li {
+                float:left;
+                }
+            li a {
+                display:block;
+                text-decoration:none;
+                color:white;
+                padding:15px;
+                text-align:center;
+                border:1px solid #EA4335;
+                }
+            li a:hover {
+                border-color:#ccc;
+                }
+            li a:focus {
+                border-color:#ccc;
+                }
+            .section1 {
+                border:1px solid #ccc;
+                border-top-style: none;
+                border-bottom-style: none;
+                border-radius:0;
+                text-align:center;
+                background-color:#4285F4;
+                color:white;
+                padding: 10px;
+                margin: 0 0 0 0;
+                }
+            .menu1 {
+                top: 0;
+                border:1px solid #ccc;
+                border-radius:10px 10px 0 0;
+                margin: 0 0 0 0;
+                background-color:white;
+                }
+            .menu2 {
+                border-color:white;
+                color:black;
+                }
+            .dropdown1 {
+                display: none;
+                }
+            .dropdown1 a {
+                opacity: 0.25;
+                }
+            footer {
+                border-top:1px solid #ccc;
+                color: #ccc;
+                padding: 1px;
+                text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>Portfolio</h1>
+        <p id="greeting">ようこそ！ボタンをクリックしてください</p>
+        <div>
+        <ul id="main" class="menu1">
+            <li><a id="kihonbutton" class="menu2" href="russian-database/russian-database_index.htm">Russian Database</a></li>
+            <li><a id="hatsuonbutton" class="menu2" href="#main">Good Day</a></li>
+        </ul>
+        </div>
+        <footer>
+            <p>Developed by Kuznetsov Andrey</p>
+        </footer>
+    </body>
+</html>
