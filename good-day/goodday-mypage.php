@@ -47,9 +47,6 @@ else $loggedin = FALSE;
             text-align: justify;
             padding: 10px;
         }
-        .leftnav {
-            border-bottom: 1px solid white;
-        }
         .nav-link:hover {
             color: #ccffff;
         }
@@ -86,10 +83,10 @@ else $loggedin = FALSE;
     <div class="col-xl-2">
         <nav class="navbar bg-grey">
             <ul class="navbar-nav">
-                <li class="nav-item leftnav">
+                <li class="nav-item">
                     <a class="nav-link text" href="goodday-index.php">Top</a>
                 </li>
-                <li class="nav-item leftnav">
+                <li class="nav-item">
                     <?php
                     if ($loggedin) {
                         echo '<a class="nav-link text" href="goodday-mypage.php">My GOOD DAYs' . $userstr . '</a>';
@@ -104,47 +101,82 @@ else $loggedin = FALSE;
     </div>
 
 <?php
-$error = $user = $pass = "";
+    if (!$loggedin) die();
 
-if (isset($_POST['user']))
+if (isset($_GET['view'])) $view = sanitizeString($_GET['view']);
+else $view = $user;
+
+if ($view == $user)
 {
-    $user = sanitizeString($_POST['user']);
-    $pass = sanitizeString($_POST['pass']);
-
-    if ($user == "" || $pass == "")
-    {
-        $error = "Not all fields were entered<br>";
-    }
-    else
-    {
-        $result = queryMySQL("SELECT user,pass FROM members WHERE user='$user' AND pass='$pass'");
-        if ($result->num_rows == 0)
-        {
-            $error = "<span class='error'>Username/Password invalid</span><br><br>";
-        }
-        else
-        {
-            $_SESSION['user'] = $user;
-            $_SESSION['pass'] = $pass;
-            echo "<script>window.location = 'goodday-mypage.php'</script>";
-            die ("You are now logged in. Please wait");
-        }
-    }
+    $name1 = $name2 = "Your";
+    $name3 = "You are";
 }
-?>
-    <div class="col-xl-10">
-        <form method='post' action='goodday-login.php'><?php$error?>
-            <span class='fieldname'>Username</span><input type='text' maxlength='16' name='user' value='$user' /><br>
-            <span class='fieldname'>Password</span><input type='password' maxlength='16' name='pass' value='$pass'><br>
-            <span class='fieldname'>&nbsp;</span>
-            <input type='submit' value='Login'>
-        </form>
-        <a class="text nav-link" href="goodday-signup.php">Sign Up</a>
-    </div>
-</div>
+else
+{
+    $name1 = "<a href='members.php?view=$view'>$view</a>'s";
+    $name2 = "$view's";
+    $name3 = "$view is";
+}
 
-<footer>
-    <p class="text">Developed by Kuznetsov Andrey</p>
-</footer>
-</body>
+echo "<div class='main'>";
+
+$followers = array();
+$following = array();
+
+$result = queryMysql("SELECT * FROM friends WHERE user='$view'");
+$num = $result->num_rows;
+
+for($j=0;$j<$num;++$j)
+{
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $followers[$j] = $row['friend'];
+}
+
+$result = queryMysql("SELECT * FROM friends WHERE friend='$view'");
+$num = $result->num_rows;
+
+for($j=0;$j<$num;++$j)
+{
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $following[$j] = $row['user'];
+}
+
+$mutual = array_intersect($followers,$following);
+$followers = array_diff($followers,$mutual);
+$following = array_diff($following,$mutual);
+$friends = FALSE;
+
+if (sizeof($mutual))
+{
+    echo "<span class='subhead'>$name2 mutual friends</span><ul>";
+    foreach ($mutual as $friend)
+        echo "<li><a href='members.php?view=$friend'>$friend</a>";
+    echo "</ul>";
+    $friends = TRUE;
+}
+
+if (sizeof($followers))
+{
+    echo "<span class='subhead'>$name2 followers</span><ul>";
+    foreach ($followers as $friend)
+        echo "<li><a href='members.php?view=$friend'>$friend</a>";
+    echo "</ul>";
+    $friends = TRUE;
+}
+
+if (sizeof($following))
+{
+    echo "<span class='subhead'>$name3 following</span><ul>";
+    foreach ($following as $friend)
+        echo "<li><a href='members.php?view=$friend'>$friend</a>";
+    echo "</ul>";
+    $friends = TRUE;
+}
+
+if (!$friends) echo "<br>You don't have any friends yet.<br><br>";
+echo "<a class='button' href='messages.php?view=$view'>" . "View $name2 messages</a>";
+?>
+
+        </div><br>
+    </body>
 </html>

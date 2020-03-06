@@ -24,6 +24,45 @@ else $loggedin = FALSE;
             });
         });
     </script>
+
+    <script>
+        function checkUser(user) {
+            if (user.value == '') {
+                O('info').innerHTML = ''
+                return
+            }
+
+            params = "user=" + user.value
+            request = new ajaxRequest()
+            request.open("POST","checkuser.php",true)
+            request.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+            request.setRequestHeader("Content-length",params.length)
+            request.setRequestHeader("Connection","close")
+
+            request.onreadystatechange = function() {
+                if (this.readyState == 4)
+                    if (this.status == 200)
+                        if (this.responseText != null)
+                            O('info').innerHTML = this.responseText
+            }
+            request.send(params)
+        }
+
+        function ajaxRequest() {
+            try {var request = new XMLHttpRequest()}
+            catch(e1) {
+                try {request = new ActiveXObject("Msxml2.XMLHTTP")}
+                catch(e2) {
+                    try {request = new ActiveXObject("Microsoft.XMLHTTP")}
+                    catch(e3) {
+                        request = false
+                    }
+                }
+            }
+            return request
+        }
+    </script>
+
     <style>
         body {
             background-color: #cccccc;
@@ -46,9 +85,6 @@ else $loggedin = FALSE;
             right: 0;
             text-align: justify;
             padding: 10px;
-        }
-        .leftnav {
-            border-bottom: 1px solid white;
         }
         .nav-link:hover {
             color: #ccffff;
@@ -86,10 +122,10 @@ else $loggedin = FALSE;
     <div class="col-xl-2">
         <nav class="navbar bg-grey">
             <ul class="navbar-nav">
-                <li class="nav-item leftnav">
+                <li class="nav-item">
                     <a class="nav-link text" href="goodday-index.php">Top</a>
                 </li>
-                <li class="nav-item leftnav">
+                <li class="nav-item">
                     <?php
                     if ($loggedin) {
                         echo '<a class="nav-link text" href="goodday-mypage.php">My GOOD DAYs' . $userstr . '</a>';
@@ -103,48 +139,38 @@ else $loggedin = FALSE;
         </nav>
     </div>
 
+
+<div class="main"><h3>Please enter your details to sign up</h3>
+
 <?php
 $error = $user = $pass = "";
+if (isset($_SESSION['user'])) destroySession();
 
-if (isset($_POST['user']))
-{
+if (isset($_POST['user'])) {
     $user = sanitizeString($_POST['user']);
     $pass = sanitizeString($_POST['pass']);
 
     if ($user == "" || $pass == "")
-    {
-        $error = "Not all fields were entered<br>";
-    }
-    else
-    {
-        $result = queryMySQL("SELECT user,pass FROM members WHERE user='$user' AND pass='$pass'");
-        if ($result->num_rows == 0)
-        {
-            $error = "<span class='error'>Username/Password invalid</span><br><br>";
-        }
-        else
-        {
-            $_SESSION['user'] = $user;
-            $_SESSION['pass'] = $pass;
-            echo "<script>window.location = 'goodday-mypage.php'</script>";
-            die ("You are now logged in. Please wait");
+        $error = "Данные введены не во все поля<br><br>";
+    else {
+        $result = queryMysql("SELECT * FROM members WHERE user='$user'");
+        if ($result->num_rows)
+            $error = "Такое имя уже существует<br><br>";
+        else {
+            queryMysql("INSERT INTO members VALUES('$user','$pass')");
+            die("<h4>Account created</h4>Please Log in.<br><br>");
         }
     }
 }
 ?>
-    <div class="col-xl-10">
-        <form method='post' action='goodday-login.php'><?php$error?>
-            <span class='fieldname'>Username</span><input type='text' maxlength='16' name='user' value='$user' /><br>
-            <span class='fieldname'>Password</span><input type='password' maxlength='16' name='pass' value='$pass'><br>
-            <span class='fieldname'>&nbsp;</span>
-            <input type='submit' value='Login'>
-        </form>
-        <a class="text nav-link" href="goodday-signup.php">Sign Up</a>
-    </div>
-</div>
 
-<footer>
-    <p class="text">Developed by Kuznetsov Andrey</p>
-</footer>
+<form method='post' action='signup.php'>$error
+<span class="fieldname">Username</span>
+<input type="text" maxlength="16" name="user" value="$user" onBlur="checkUser(this)"><span id="info"></span><br>
+<span class="fieldname">Password</span>
+<input type="text" maxlength="16" name="pass" value="$pass"><br>
+<span class="fieldname">&nbsp;</span>
+<input type="submit" value="Sign up" />
+</form></div><br>
 </body>
 </html>
