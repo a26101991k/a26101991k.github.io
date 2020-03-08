@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>JRock release guide</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ <script>
+  $(document).ready(function(){
+      $(".btn-block").click(function(){
+          var check = [];
+          var uncheck = [];
+          $.each($('input[type="checkbox"]:checked'),function() {
+              check.push($(this).val());
+          });
+          $.each($('input[type="checkbox"]:not(:checked)'),function() {
+              uncheck.push($(this).val());
+          });
+          var a;
+          var checkclass;
+          var b;
+          var x;
+          var uncheckclass;
+          var y;
+          if (check.length > 0) {
+              for (a of check) {
+                  checkclass = document.getElementsByClassName(a);
+                  for (b of checkclass) {
+                      b.style.display = "block";
+                  }
+              }
+              for (x of uncheck) {
+                  uncheckclass = document.getElementsByClassName(x);
+                  for (y of uncheckclass) {
+                      y.style.display = "none";
+                  }
+              }
+          }
+          else {
+              for (x of uncheck) {
+                  uncheckclass = document.getElementsByClassName(x);
+                  for (y of uncheckclass) {
+                      y.style.display = "block";
+                  }
+              }
+          }
+          $(this).blur();
+      });
+      $(".btn").click(function () {
+          $(this).blur();
+      });
+  })
+ </script>
+ <style>
+     body {
+         background-color: #cccccc;
+     }
+     #titleimg {
+         max-width: 25%;
+         height: auto;
+     }
+     .img {
+         background-color: white;
+     }
+     footer {
+         text-align: center;
+         border-top: 1px solid white;
+     }
+     .card {
+         margin: 1px;
+     }
+     .cardimg {
+         width: 150px;
+         height: 150px;
+         float: left;
+         margin: 10px;
+         border: 1px solid black;
+     }
+ </style>
+</head>
+<body>
+    <div class="container-fluid img">
+        <img class="img-fluid mx-auto d-block" id="titleimg" src="jrg-logo.jpg" alt="title">
+    </div>
+    <div class="row container-fluid">
+
+        <div class="col-xl-2">
+            <div class="form-check">
+                <h3>Filters</h3>
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check1" name="option1" value="Buck-Tick">Buck-Tick
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check2" name="option2" value="Dadaroma">Dadaroma
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check3" name="option3" value="DevelopOnesFaculties">Develop One's Faculties
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check4" name="option4" value="Diaura">Diaura
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check5" name="option5" value="Lynch">Lynch
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="check1">
+                    <input type="checkbox" class="form-check-input" id="check6" name="option6" value="SurviveSaidTheProphet">Survive Said The Prophet
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="material-icons">filter_list</i> Filter</button>
+        </div>
+
+        <div class="col-xl-10">
+            <div class="card SurviveSaidTheProphet">
+                <div class="card-body">
+                    <img class="cardimg" src="http://survivesaidtheprophet.com/wp/wp-content/uploads/2019/10/INSIDE_YOUR_HEAD_COVER-800x800.jpg" alt="Card image">
+                    <h4 class="card-title">Survive Said The Prophet - Inside Your Head</h4>
+                    <p class="card-text">Release date: 1月15日<br>Type: Album</p>
+                    <a href="jrg-inside_your_head.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card Buck-Tick">
+                <div class="card-body">
+                    <img class="cardimg" src="https://aop-emtg-jp.s3.amazonaws.com/prod/public/bucktick/contents/discography/0fb07a365a803ab82b971b309811795b.jpeg" alt="Card image">
+                    <h4 class="card-title">Buck-Tick - 堕天使</h4>
+                    <p class="card-text">Release date: 1月29日<br>Type: Single</p>
+                    <a href="jrg-datenshi.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card Diaura">
+                <div class="card-body">
+                    <img class="cardimg" src="https://diaura.net/s3/skiyaki/uploads/image/file/56198/%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9B%E3%82%99%E3%83%BC%E3%83%88%E3%82%99_1-80.jpg" alt="Card image">
+                    <h4 class="card-title">Diaura - ENVY</h4>
+                    <p class="card-text">Release date: 3月4日<br>Type: Single</p>
+                    <a href="jrg-envy.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card DevelopOnesFaculties">
+                <div class="card-body">
+                    <img class="cardimg" src="http://dof-official.com/_src/2084/img20200214004817651320.jpg" alt="Card image">
+                    <h4 class="card-title">Develop One's Faculties - Inverse Reverse</h4>
+                    <p class="card-text">Release date: 3月11日<br>Type: Album</p>
+                    <a href="jrg-inverse_reverse.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card Lynch">
+                <div class="card-body">
+                    <img class="cardimg" src="http://pc.lynch.jp/wp/wp-content/uploads/2020/02/KICS-3904-JK.jpg" alt="Card image">
+                    <h4 class="card-title">Lynch - Ultima</h4>
+                    <p class="card-text">Release date: 3月18日<br>Type: Album</p>
+                    <a href="jrg-ultima.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card Diaura">
+                <div class="card-body">
+                    <img class="cardimg" src="https://diaura.net/s3/skiyaki/uploads/image/file/56201/Ctype.jpg" alt="Card image">
+                    <h4 class="card-title">Diaura - Hydra</h4>
+                    <p class="card-text">Release date: 4月1日<br>Type: Single</p>
+                    <a href="jrg-hydra.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+            <div class="card Dadaroma">
+                <div class="card-body">
+                    <img class="cardimg" src="http://www.dadaroma.com/cms/album/album_arena-45_1872.jpg" alt="Card image">
+                    <h4 class="card-title">Dadaroma - ミスター・テロルマン</h4>
+                    <p class="card-text">Release date: 4月15日<br>Type: Single</p>
+                    <a href="jrg-mister_terrorman.htm"><button type="button" class="btn btn-primary btn-lg"><i class="material-icons">info</i> 詳細</button></a>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+        </div>
+</div>
+
+<footer>
+ <p class="text">Developed by Kuznetsov Andrey</p>
+</footer>
+</body>
+</html>

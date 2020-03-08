@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>JRock release guide</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ <script>
+  $(document).ready(function(){
+      $(".btn").click(function () {
+          $(this).blur();
+      });
+  })
+ </script>
+ <style>
+     body {
+         background-color: #cccccc;
+     }
+     #titleimg {
+         max-width: 25%;
+         height: auto;
+     }
+     .img {
+         background-color: white;
+     }
+     footer {
+         text-align: center;
+         border-top: 1px solid white;
+     }
+     .card {
+         margin: 1px;
+     }
+     .cardimg {
+         width: 300px;
+         height: 300px;
+         margin: 10px;
+         border: 1px solid black;
+     }
+     #video {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+         width: 50%;
+     }
+ </style>
+</head>
+<body>
+    <div class="container-fluid img">
+        <a href="jrg-index.htm"><img class="img-fluid mx-auto d-block" id="titleimg" src="jrg-logo.jpg" alt="title"></a>
+    </div>
+    <div class="row container-fluid">
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <img class="cardimg" src="http://www.dadaroma.com/cms/album/album_arena-45_1872.jpg" alt="Card image">
+                    <h4 class="card-title">Dadaroma - 「ミスター・テロルマン」A Type</h4>
+                    <p class="card-text">Release date: 4月15日<br>
+                        Type: Single<br><br>
+                        [CD]<br>
+                        1.「ミスター・テロルマン」<br>
+                        2.音の無い森<br><br>
+                        [DVD]<br>
+                        「ミスター・テロルマン」（Music Video.）</p>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <img class="cardimg" src="http://www.dadaroma.com/cms/album/album_arena-45_1873.jpg" alt="Card image">
+                    <h4 class="card-title">Dadaroma - 「ミスター・テロルマン」B Type</h4>
+                    <p class="card-text">Release date: 4月15日<br>
+                        Type: Single<br><br>
+                        [CD]<br>
+                        1.「ミスター・テロルマン」<br>
+                        2.音の無い森<br>
+                        3.POINT OF NO RETURN</p>
+                    <a href="#"><button type="button" class="btn btn-primary btn-lg" disabled><i class="material-icons">shopping_cart</i> 買う</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+    </div>
+
+<footer>
+ <p class="text">Developed by Kuznetsov Andrey</p>
+</footer>
+</body>
+</html>
